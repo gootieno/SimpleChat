@@ -17,7 +17,7 @@ app.post("/comments", function (req, res) {
 });
 
 app.get("/comments", function (req, res) {
-  res.json({ comments });
+  res.json({ messages: comments });
 });
 
 app.listen(3001, () => console.log(`listening on port 3001`));
