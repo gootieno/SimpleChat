@@ -1,0 +1,67 @@
+h1 {
+    color: red;
+}
+
+#comments-container {
+    width: 500px;
+    height: 400px;
+    box-shadow: 0px 0px 5px gray;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    scrollbar-gutter: stable;
+}
+
+.comments.send {
+    align-self: flex-end;
+    border-right: none;
+    box-shadow: -5px 0px 15px rgba(128, 128, 128, 0.584);
+    padding-right: 20px;
+}
+
+
+.comments { 
+    margin: 10px 2px;
+    word-break: break-all;
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+    max-width: 60%;
+}
+
+.comments.receive {
+    border-left: none;
+    box-shadow: 5px 3px 15px rgba(128, 128, 128, 0.584);
+    padding-left: 20px;
+}
+
+
+#comment-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+#chat-container {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 300px;
+}
+
+::-webkit-scrollbar {
+    visibility: hidden;
+    width: 5px;
+}
+
+div:hover::-webkit-scrollbar{
+    scrollbar-gutter: stable;
+}
+
+div:hover::-webkit-scrollbar-thumb{
+    background: gray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+}
