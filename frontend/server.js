@@ -11,10 +11,11 @@ const server = http.createServer((req, res) => {
     const urlArr = req.url.split("/static/");
     const filePath = urlArr[1];
     const extension = filePath.split(".")[1];
-    const responseBody = fs.readFileSync(filePath);
+    const responseBody = fs.readFileSync(`./${filePath}`);
 
     const contentType = getContentType(extension);
 
+    console.log(filePath);
     res.statusCode = 200;
     res.setHeader("Content-Type", contentType);
     return res.end(responseBody);
