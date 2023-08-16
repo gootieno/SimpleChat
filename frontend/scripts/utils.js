@@ -1,20 +1,19 @@
-export const sendMessage = async () => {
+export const sendMessage = () => {
   const chatInput = document.querySelector(".chat-input");
 
   if (!chatInput.value) return;
 
-  const response = await fetch("http://localhost:3001/comments", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: chatInput.value }),
-  });
+  const socket = io("http://localhost:5000", { transports: ["websocket"] });
 
-  const data = await response.json();
-
-  showMessage(data.message);
-
+  socket.emit("message", chatInput.value);
   chatInput.value = "";
 };
+const socket = io("http://localhost:5000", { transports: ["websocket"] });
+
+socket.on("message", function (msg) {
+  console.log("socket message ", msg);
+  showMessage(msg);
+});
 
 export const showMessage = (message) => {
   const chatContentContainer = document.getElementById(
@@ -30,11 +29,11 @@ export const showMessage = (message) => {
 };
 
 export const getAllMessages = async () => {
-  const response = await fetch("http://localhost:3001/comments");
+  const response = await fetch("http://localhost:5000/comments");
 
   const { messages } = await response.json();
-
-  for (const data of messages) {
-    showMessage(data.message);
+  console.log("messages ", messages);
+  for (const message of messages) {
+    showMessage(message);
   }
 };
