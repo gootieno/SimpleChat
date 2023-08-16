@@ -20,4 +20,6 @@ app.get("/comments", function (req, res) {
   res.json({ messages: comments });
 });
 
-app.listen(3001, () => console.log(`listening on port 3001`));
+const port = 5000;
+
+app.listen(port, () => console.log(`listening on port ${port}`));
